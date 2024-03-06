@@ -15,3 +15,13 @@ if 44 in x:
     print("there")
 else:
     print("not there")
+
+# condition statement
+
+n = int(input("Enter a number:"))
+if 0 > n:
+    print("Nagative")
+elif 0 < n:
+    print("Pasitive")
+else:
+    print("Zero")
