@@ -31,3 +31,8 @@ print(set1,type(set1))
 # converting set to list using type casting
 list2 = list(set1)
 print(list(set1))
+
+# converting tuple to list
+
+v = (1,2,3,54,6)
+print(v,type(v))
