@@ -32,7 +32,14 @@ a = 5
 print(a)
 b = 10
 print(a == b)
+print( a != b)
 print(a > b)
 print(a < b)
 print( a >= b)
 print(a <= b)
+
+# logical operator
+print("Logical operator")
+print( 5 > 10  and 15 > 10)
+print(5 > 10 or 15 > 10)
+print(not(True))
