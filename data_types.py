@@ -29,4 +29,5 @@ set1 = set(tuple1)
 print(set1,type(set1))
 
 # converting set to list using type casting
+list2 = list(set1)
 print(list(set1))
