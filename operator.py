@@ -51,4 +51,8 @@ b = 20
 print( a is b)
 print( a is not b)
 
-
+# membership operator
+# 1) in 2) in not
+a = [33,22,44,55,6]
+print(21 in a)
+print(21 not in  a)
