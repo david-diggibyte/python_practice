@@ -22,3 +22,9 @@ print(list1,type(list1))
 
 tuple1 = tuple(list1)
 print(tuple1,type(tuple1))
+
+# converting tuple to set using type casting
+
+set1 = set(tuple1)
+print(set1,type(set1))
+
