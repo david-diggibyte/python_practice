@@ -40,6 +40,15 @@ print(a <= b)
 
 # logical operator
 print("Logical operator")
-print( 5 > 10  and 15 > 10)
+print( 5 > 10 and 15 > 10)
 print(5 > 10 or 15 > 10)
 print(not(True))
+
+# identity operator (in this operator is compare thr memory address of two object)
+# 1) is 2) is not
+a = 10
+b = 20
+print( a is b)
+print( a is not b)
+
+
