@@ -12,3 +12,8 @@ print(x,type(y))
 
 z = str(x)
 print(z , type(z))
+
+# string to list
+
+list1 = list(z)
+print(list1,type(list1))
