@@ -7,3 +7,8 @@ print(type(x))
 
 y = float(x)
 print(x,type(y))
+
+# converting to string
+
+z = str(x)
+print(z , type(z))
