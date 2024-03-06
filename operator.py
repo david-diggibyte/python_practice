@@ -26,3 +26,13 @@ x **= 2
 print(x)
 x %= 2
 print(x)
+
+# Relation operator
+a = 5
+print(a)
+b = 10
+print(a == b)
+print(a > b)
+print(a < b)
+print( a >= b)
+print(a <= b)
