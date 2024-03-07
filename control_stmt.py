@@ -18,3 +18,8 @@ for i in name:
     if "sasi" == i:
         break
     print(i)
+# iterate sequence using continue keyword in loop
+for i in name:
+    if "sais" == name:
+        continue
+    print(i)
