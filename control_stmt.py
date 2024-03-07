@@ -23,3 +23,13 @@ for i in name:
     if "sais" == name:
         continue
     print(i)
+
+# in while loop using break keyword
+n = int(input("Enter a number:"))
+count = 0
+while count < n:
+    if count % 2 == 0:
+        count += 1
+        continue
+    print(count)
+    count += 1
