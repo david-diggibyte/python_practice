@@ -16,4 +16,10 @@ n = int(input("Enter a number:"))
 count = 0
 while count <= n:
     print(count)
-    count +=1
+    count += 1
+#  iterate sequence using while loop
+names = ("mani","david","anand","sasi","alex","sathya")
+count = 0
+while count < len(names):
+    print(names[count])
+    count += 1
