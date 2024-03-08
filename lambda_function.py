@@ -12,3 +12,16 @@ print(addition(55,44,33,22))
 sub_string = lambda string: string in "live or die"
 print(sub_string("live"))
 
+mum = [112,22,33,4444,555,6666,77,88888,9]
+
+
+ # index using lambda function
+
+index = lambda word : word[-1]
+print(index("lambda"))
+
+# palidrome or not
+
+palindrome = lambda word : word == word[::-1]
+print(palindrome(word = "madam"))
+
