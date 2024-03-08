@@ -1,7 +1,7 @@
 # practice function
 
 # find anagram using function
-"""
+
 def anagram(name1,name2):
    if sorted(name1) == sorted(name2):
         print("anagram !!")
@@ -32,7 +32,7 @@ word = str(input("Enter a word :"))
 unique_char(word)
 
 # find fatorial using function
-"""
+
 def fact(n):
     if 0 == n or 1 == n:
         return 1
