@@ -20,3 +20,13 @@ def palindrome(word):
         print("not palindrome ..")
 name = str(input("Enter a name :"))
 palindrome(word = name) # called tha function
+
+# Write a Python function to determine if a string has all unique characters.
+
+def unique_char(word):
+    if len(word) ==len(set(word)):
+        print("unique charactor")
+    else:
+        print("not unique charactor")
+word = str(input("Enter a word :"))
+unique_char(word)
