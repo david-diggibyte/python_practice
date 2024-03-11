@@ -19,3 +19,22 @@ print(sum2.add())
 
 sum3 = Addition(2,2,2)
 print(sum3.add())
+
+# Method overloading another example
+
+class Multiplication():
+    total = 1
+    def mul(self,*args):
+       total = 1
+       for i in args:
+        total *=  i
+       return total
+
+mul1 = Multiplication()
+print(mul1.mul(5,5))
+
+mul2 = Multiplication()
+print(mul2.mul(1,2,3,4,5))
+
+mul3 = Multiplication()
+print(mul3.mul(100,100,100))
