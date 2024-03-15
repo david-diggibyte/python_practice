@@ -1,0 +1,93 @@
+create database employee;
+
+use employee;
+
+create table workers(
+id int,
+name varchar(30),
+department varchar(30),
+salary int );
+
+alter table workers add company varchar(30);
+
+select * from workers;
+
+insert into workers values (1,'david','data enginner',10000,'diggibyte technolgy');
+
+insert into workers(id,name,department,salary,company)
+     values (1,'david','data enginner',10000,'diggibyte technolgy'),
+	        (2,'davi','data enginner',100000,'diggibyte technolgy');
+
+select * from workers;
+
+select id,name from workers;
+
+TRUNCATE TABLE workers;
+
+EXEC sp_help 'workers'; -- showing the table structure
+
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'workers';   -- showing the table structure
+
+ALTER TABLE workers DROP column company;
+
+SELECT * FROM workers;
+
+ALTER TABLE workers ADD company VARCHAR(30);
+
+INSERT INTO workers (id, name, department, salary, company)
+VALUES
+    (1, 'david', 'data engineer', 10000, 'diggibyte technology'),
+    (2, 'davi', 'data engineer', 100000, 'diggibyte technology'),
+    (3, 'john', 'HR', 5000, 'diggibyte technology'),
+    (4, 'sarah', 'HR', 6000, 'diggibyte technology'),
+    (5, 'emma', 'marketing', 7000, 'diggibyte technology'),
+    (6, 'michael', 'marketing', 8000, 'diggibyte technology'),
+    (7, 'james', 'finance', 9000, 'diggibyte technology'),
+    (8, 'emily', 'finance', 9500, 'diggibyte technology'),
+    (9, 'chris', 'development', 12000, 'diggibyte technology'),
+    (10, 'lisa', 'development', 11000, 'diggibyte technology');
+
+SELECT TOP 1 * FROM workers;
+
+exec sp_help 'workers';
+
+SELECT *
+FROM workers
+WHERE department = 'data engineer';
+
+SELECT *
+FROM workers
+WHERE department = 'data engineer' OR company = 'diggibyte technology';
+
+SELECT TOP 1 * FROM workers;
+
+EXEC sp_help 'workers';
+
+SELECT COLUMN_NAME,DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME  = 'workers';
+
+
+ALTER TABLE workers
+DROP COLUMN department;
+
+INSERT INTO workers(id,name,company) VALUES (2,'david','zogo');
+
+SELECT TOP 1 * FROM workers ORDER BY company DESC;
+
+UPDATE workers
+SET salary = 5000
+WHERE company = 'zogo';
+
+SELECT * FROM workers;
+
+UPDATE workers
+SET salary = 20000 , name = 'david selvam'
+WHERE name = 'david';
+
+INSERT INTO workers VALUES (13,'rubi',40000,'diggibyte');
+
+DELETE FROM workers
+WHERE id = 13 AND name = 'rubi' or company = 'zogo';
