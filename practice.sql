@@ -94,3 +94,88 @@ FROM workers
 GROUP BY first_name
 HAVING COUNT(first_name) > 1
 ORDER BY count_name DESC;
+
+USE employee;
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'; -- show all tables in database
+
+SELECT * FROM workers;
+SELECT name
+FROM sys.tables;   -- show all tables in database
+
+EXEC sp_rename 'deparment','department';  --change the table name
+
+SELECT * FROM department;
+
+INSERT INTO department(dept_id,dept_name)
+            VALUES(5,'data analyst'),
+			       (6,'advanced analytics'),
+				   (7,'power bi devaloper');
+
+SELECT * FROM workers;
+
+INSERT INTO workers(id,first_name,last_name,salary,dept_id)
+          VALUES (12,'mariya','nathan',20000,null);
+
+
+
+-- joins in SSMS
+
+-- inner join
+
+SELECT *
+FROM workers AS w
+INNER JOIN department AS d
+ON w.dept_id = d.dept_id;
+
+-- left join
+
+SELECT w.*,d.*
+FROM workers AS w
+LEFT JOIN department AS d
+ON w.dept_id = d.dept_id;
+
+-- right join
+
+SELECT w.*,d.*
+FROM workers AS W
+RIGHT JOIN department AS d
+ON w.dept_id = d.dept_id;
+
+-- full join
+
+SELECT w.first_name,w.id,d.dept_id,d.dept_name
+FROM workers AS w
+FULL JOIN department AS d
+ON w.dept_id = d.dept_id;
+
+-- cross join
+
+SELECT *
+FROM workers
+CROSS JOIN department;
+
+
+
+SELECT w.first_name,w.id,d.dept_id,d.dept_name
+FROM workers AS w
+FULL JOIN department AS d
+ON w.dept_id = d.dept_id
+WHERE w.id IS NOT NULL;
+
+SELECT TOP 5 w.first_name,w.id,d.dept_id,d.dept_name
+FROM workers AS w
+FULL JOIN department AS d
+ON w.dept_id = d.dept_id
+WHERE w.id IS NOT NULL
+ORDER BY w.first_name DESC;
+
+-- UNION
+
+SELECT id, first_name
+FROM workers
+   UNION
+SELECT dept_id, dept_name
+FROM department;
