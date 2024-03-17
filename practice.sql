@@ -179,3 +179,60 @@ FROM workers
    UNION
 SELECT dept_id, dept_name
 FROM department;
+
+
+USE employee;
+CREATE TABLE student(
+     id INT,
+	 name VARCHAR(30),
+	 department VARCHAR(30),
+	 marks INT,
+	 HOD VARCHAR(30),
+	 collage VARCHAR(30));
+
+EXEC sp_help 'student';
+
+SELECT name
+FROM sys.tables;
+
+SELECT *
+FROM INFORMATION_SCHEMA.TABLES;
+
+-- add one column
+
+ALTER TABLE student
+ADD semaster VARCHAR(30);
+
+-- change column name
+
+EXEC sp_rename 'student.semaster','finalsemaster','COLUMN';
+
+-- drop the column name
+
+ALTER TABLE student
+DROP COLUMN finalsemaster;
+
+-- add the consraints
+
+-- adding the peimary key
+
+SELECT * FROM student;
+INSERT INTO student(id,name,department,marks,HOD,collage)
+       VALUES(1,'david','cse',80,'rober selvam','govt clg');
+
+-- adding not null constraint
+
+ALTER TABLE student
+ALTER COLUMN id INT NOT NULL;
+
+ALTER TABLE student
+ALTER COLUMN id INT NULL;
+
+-- adding primary key
+
+ALTER TABLE student
+ADD CONSTRAINT PK_stud
+PRIMARY KEY(id);
+
+ALTER TABLE student
+DROP CONSTRAINT PK_stud;
