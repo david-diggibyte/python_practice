@@ -236,3 +236,95 @@ PRIMARY KEY(id);
 
 ALTER TABLE student
 DROP CONSTRAINT PK_stud;
+
+-- WINDOW FUNCTION AND SUBQUERY
+
+USE ecommerce;
+
+CREATE TABLE employees (
+    employee_id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    manager_id INT
+);
+
+INSERT INTO employees (employee_id, first_name, last_name, department, salary, manager_id)
+VALUES
+    (1, 'John', 'Doe', 'Finance', 60000.00, NULL),
+    (2, 'Jane', 'Smith', 'Finance', 55000.00, 1),
+    (3, 'Alice', 'Johnson', 'HR', 50000.00, NULL),
+    (4, 'Bob', 'Williams', 'HR', 48000.00, 3),
+    (5, 'Charlie', 'Brown', 'IT', 70000.00, NULL),
+    (6, 'David', 'Lee', 'IT', 65000.00, 5),
+    (7, 'Emma', 'Garcia', 'IT', 60000.00, 5),
+    (8, 'Michael', 'Miller', 'Sales', 55000.00, NULL),
+    (9, 'Sophia', 'Wilson', 'Sales', 52000.00, 8),
+    (10, 'Olivia', 'Martinez', 'Sales', 48000.00, 8),
+    (11, 'James', 'Taylor', 'Marketing', 60000.00, NULL),
+    (12, 'Daniel', 'Anderson', 'Marketing', 58000.00, 11),
+    (13, 'Ella', 'Thomas', 'Marketing', 55000.00, 11),
+    (14, 'William', 'Harris', 'Engineering', 72000.00, NULL),
+    (15, 'Victoria', 'White', 'Engineering', 68000.00, 14),
+    (16, 'Liam', 'Clark', 'Engineering', 65000.00, 14);
+
+	SELECT * FROM employees;
+
+INSERT INTO employees(employee_id, first_name, last_name, department, salary, manager_id)
+             VALUES(6, 'David', 'Lee', 'IT', 65000.00, 5),
+			       (7, 'Emma', 'Garcia', 'IT', 60000.00, 5),
+				   (10, 'Olivia', 'Martinez', 'Sales', 48000.00, 8),
+				   (4, 'Bob', 'Williams', 'HR', 48000.00, 3),
+				   (9, 'Sophia', 'Wilson', 'Sales', 52000.00, 8),
+				   (3, 'Alice', 'Johnson', 'HR', 50000.00, NULL),
+				   (15, 'Victoria', 'White', 'Engineering', 68000.00, 14),
+                   (16, 'Liam', 'Clark', 'Engineering', 65000.00, 14);
+
+SELECT *
+FROM ( SELECT first_name,salary,
+              ROW_NUMBER() OVER(PARTITION BY first_name ORDER BY salary) AS latest_salary
+	 FROM employees) AS sub
+WHERE latest_salary = 1
+ORDER BY first_name ASC;
+
+SELECT first_name,salary FROM employees ORDER BY first_name;
+
+
+
+SELECT department,CONCAT(first_name,' ',last_name) AS full_name,salary,
+       row_number() over( partition by department order by employee_id desc) AS row_number
+FROM employees;
+
+WITH cte1 AS (
+SELECT first_name ,department,
+       RANK() OVER(PARTITION BY department ORDER BY first_name) AS rankk
+FROM employees)
+SELECT * FROM cte1 WHERE rankk = 1;
+
+WITH cte AS  (
+SELECT first_name,department,
+       ROW_NUMBER() OVER(PARTITION BY department ORDER BY first_name) AS rno
+FROM employees )
+SELECT * FROM cte WHERE rno = 1;
+
+SELECT *
+FROM (
+    SELECT
+        first_name,
+        department,
+        ROW_NUMBER() OVER (PARTITION BY department ORDER BY first_name) AS rno
+    FROM employees
+) AS subquery
+WHERE rno = 1;
+
+SELECT * FROM employees;
+SELECT department,count(department),sum(salary)
+FROM employees
+GROUP BY department;
+
+
+SELECT *
+FROM ( SELECT first_name,department,salary,
+      NTILE(5) OVER(ORDER BY employee_id) AS ntilee
+	  FROM employees) AS ntileee;
