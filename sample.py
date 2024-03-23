@@ -23,3 +23,12 @@ df.printSchema()
 print(type(spark))
 print(dir(spark))
 print(help(StructType))
+
+# now using dictionary to create a DataFrame
+
+data1 = [{'id':1,'name':"david",'gender':'male','Education':'Bsc'},
+         {'id':2,'name':'sebastin','gender':'male','Education':'Bsc'},
+         {'id':3,'name':'sathiya','gender':'female','Education':'Bsc Math'}]
+df1 = spark.createDataFrame(data=data1)
+df1.show()
+df1.printSchema()
